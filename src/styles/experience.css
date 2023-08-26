@@ -1,0 +1,14 @@
+.jobHeader {
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid black;
+    justify-content: space-between;
+}
+
+.job {
+    margin-top: 10px;
+}
+
+.workExperience  li {
+    margin-left: 1rem;
+}
