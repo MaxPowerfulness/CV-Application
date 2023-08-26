@@ -1,3 +1,7 @@
+.summary {
+    border-bottom: 3px solid black;
+}
+
 textarea {
     display: block;
     margin-left: auto;

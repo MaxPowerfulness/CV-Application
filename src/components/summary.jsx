@@ -5,9 +5,9 @@ function Summary() {
     const [summary, setSummary] = useState('')
 
     return (
-        <section>
+        <section id="section">
             <h1 className="summary">Summary</h1>
-            <textarea name="summary" id="summaryText" cols="30" rows="10" value={summary} onChange={(e) => setSummary(e.target.value)}></textarea>
+            <textarea name="summary" id="summaryText" cols="68" rows="4" maxLength="280" value={summary} onChange={(e) => setSummary(e.target.value)}></textarea>
         </section>
     )
 }
