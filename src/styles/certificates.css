@@ -1,0 +1,14 @@
+#certificates {
+    width: 40%;
+}
+
+.certificatesHeader {
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid black;
+    justify-content: space-between;
+}
+
+.certificateList li {
+    margin-left: 2rem;
+}
