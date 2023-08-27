@@ -21,10 +21,11 @@ function Job() {
         <div className="job">
             <p><input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} /> | <input type="date" name="startDate"/> to <input type="date" name="endDate"/></p>
             <input placeholder="Company" name="company" value={company} onChange={(e) => setCompany(e.target.value)} /> 
-            <ul className="workExperience">
+            <ul className="workExperienceList">
                 <li><WorkExperience /></li>
                 <li><WorkExperience /></li>
                 <li><WorkExperience /></li>
+                <li><button>+</button></li>
             </ul>
         </div>
     )

@@ -1,0 +1,6 @@
+main {
+    display: grid;
+    grid-template-columns: 0.33fr 0.66fr;
+    gap: 2rem
+  }
+  
