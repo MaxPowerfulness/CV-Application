@@ -12,3 +12,7 @@
 .workExperienceList  li {
     margin-left: 2rem;
 }
+
+.btnCont {
+    display: flex;
+}

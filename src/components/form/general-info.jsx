@@ -9,34 +9,34 @@ function GerneralInfo({onName, onPosition, onPhoneNumber, onEmail, onLocation, o
       <fieldset>
         <p>
           <label htmlFor="name">Name:</label>
-          <input type="text" id='name' onChange={onName} placeholder="Name" />
+          <input type="text" id='name' onChange={onName} />
         </p>
 
         <p>
           <label htmlFor="position">Position:</label>
-          <input type="text" id='position' onChange={onPosition} placeholder="Position"/>
+          <input type="text" id='position' onChange={onPosition} />
         </p>
       </fieldset>
 
       <fieldset>
         <p>
           <label htmlFor="phone">Phone:</label>
-          <input type="text" id='phone' placeholder="Phone" onChange={onPhoneNumber} />
+          <input type="text" id='phone'  onChange={onPhoneNumber} />
         </p>
 
         <p>
           <label htmlFor="email">Email:</label>
-          <input type="text" id='email' placeholder="Email" onChange={onEmail} />
+          <input type="text" id='email' onChange={onEmail} />
         </p>
 
         <p>
           <label htmlFor="location">Location:</label>
-          <input type="text" id='location' placeholder="Location" onChange={onLocation} />
+          <input type="text" id='location' onChange={onLocation} />
         </p>
 
         <p>
           <label htmlFor="website">Website/Linkedin:</label>
-          <input type="text" id='website' placeholder="Linkedin" onChange={onWebsite} />
+          <input type="text" id='website' onChange={onWebsite} />
         </p>
       </fieldset>
     </form>

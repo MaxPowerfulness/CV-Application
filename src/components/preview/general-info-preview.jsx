@@ -7,31 +7,31 @@ import pfp from '../../assets/Default_pfp.svg.png'
 
 function GerneralInfoPreview({ fullName, position, phoneNum, email, location, website }) {
     return (
-        <section id="personalInfo">
+        <form id="personalInfo">
             <div className='infoCont'>
-                <input type="text" name='name' value={fullName} />
-                <input type="text" name='position' value={position} />
+                <input type="text" name='name' value={fullName} placeholder="Name" />
+                <input type="text" name='position' value={position} placeholder="Position" />
                 <div className='personalInfoCont'>
                     <ul className='infoList'>
                         <li>
-                            <img src={phoneIcon} alt="phone" /> <input type="text" value={phoneNum} />
+                            <img src={phoneIcon} alt="phone" /> <input type="text" value={phoneNum} placeholder="Phone" />
                         </li>
                         <li>
-                            <img src={emailIcon} alt="email" /> <input type="text" value={email} />
+                            <img src={emailIcon} alt="email" /> <input type="text" value={email} placeholder="Email" />
                         </li>
                     </ul>
                     <ul className='infoList'>
                         <li>
-                            <img src={locationIcon} alt="location" /> <input type="text" value={location} />
+                            <img src={locationIcon} alt="location" /> <input type="text" value={location} placeholder="Location" />
                         </li>
                         <li>
-                            <img src={websiteIcon} alt="website" /> <input type="text" value={website} />
+                            <img src={websiteIcon} alt="website" /> <input type="text" value={website} placeholder="Website" />
                         </li>
                     </ul>
                 </div>
             </div>
             <img src={pfp} alt="profilePicture" className="profilePic" />
-         </section>
+         </form>
     )
 }
 

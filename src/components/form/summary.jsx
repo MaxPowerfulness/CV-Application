@@ -1,12 +1,13 @@
-import "../styles/summary.css";
+import "../../styles/summary.css";
 
-function Summary() {
+function Summary({onSummary}) {
 
     return (
-        <section id="section">
-            <h1 className="summary">Summary</h1>
-            <textarea name="summary" id="summaryText" cols="55" rows="4" maxLength="280" value={summary} onChange={(e) => setSummary(e.target.value)}></textarea>
-        </section>
+        <form>
+            <h1>Summary</h1>
+            <label htmlFor="summaryText">Summary</label>
+            <textarea name="summary" id="summaryText" cols="55" rows="4" maxLength="280" placeholder="Tell me about yourself" onChange={onSummary}></textarea>
+        </form>
     )
 }
 

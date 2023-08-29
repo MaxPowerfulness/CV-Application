@@ -1,7 +1,11 @@
 import { useState } from 'react';
-import GerneralInfo from './components/form/general-info';
-import Preview from './components/preview/preview'
-import './app.css'
+import {v4} from 'uuid'
+import GerneralInfo from './form/general-info'; 
+import Summary from './form/summary'
+import Experience from './form/experience';
+import Preview from './preview/preview'
+import '../styles/app.css'
+
 
 function App() {
     // initialize all state variables here
@@ -12,6 +16,7 @@ function App() {
     const [location, setLocation] = useState('');
     const [website, setWebsite] = useState('');
     const [summary, setSummary] = useState('');
+    const [experience, setExperience] = useState(null)
     // define setState functions here
     function onName(e) {
         setFullName(e.target.value)
@@ -41,15 +46,24 @@ function App() {
         setSummary(e.target.value)
     }
 
+    function onExperience(e) {
+        e.preventDefault();
+        console.log(e.target)
+        const experience = {};
+        experience.id = v4();
+        experience.title = e.target[0].value
+    }
+
     return (
         <main>
-            <section id='enterInfo'>
+            <form id='enterInfo'>
                 <GerneralInfo onName={onName} onPosition={onPosition} onPhoneNumber={onPhoneNumber} onEmail={onEmail} onLocation={onLocation} onWebsite={onWebsite} />
-
-            </section>
-            <section id='preview'>
+                <Summary onSummary={onSummary} /> 
+                <Experience onSubmit={onExperience} />
+            </form>
+            <form id='preview'>
                 <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} />
-            </section>
+            </form>
         </main>
         // nav bar to adjust settings/print
     )

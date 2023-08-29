@@ -1,43 +1,30 @@
-import { useState } from "react";
-import '../styles/experience.css'
-
-function Experience() {
-    
+function Experience({onSubmit}) {
     return (
-        <section id="section">
-            <div className="jobHeader">
-                <h1>Experience</h1>
-                <button className="addJob">+</button>
+        <form action="">
+            <h1>Experience</h1>
+            <p>
+                <label htmlFor="title">Title:</label>
+                <input type="text" id="title" />
+            </p>
+            <p>
+                <label htmlFor="company">Company:</label>
+                <input type="text" id="company" />
+            </p>
+            <p>
+                <label htmlFor="start">Start:</label>
+                <input type="date" id="start" />
+                <label htmlFor="end">End:</label>
+                <input type="date" id="end" />
+            </p>
+            <p>
+                <label htmlFor="duties">Duties</label>
+                <input type="text" id="duties" />
+            </p>
+            <div className="btnCont">
+                <button onSubmit={onSubmit}>Add</button>
+                <button type="button">Remove</button>
             </div>
-            <Job />
-        </section>
-    )
-}
-
-function Job() {
-    const [title, setTitle] = useState('')
-    const [company, setCompany] = useState('')
-    return (
-        <div className="job">
-            <p><input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} /> | <input type="date" name="startDate"/> to <input type="date" name="endDate"/></p>
-            <input placeholder="Company" name="company" value={company} onChange={(e) => setCompany(e.target.value)} /> 
-            <ul className="workExperienceList">
-                <li><WorkExperience /></li>
-                <li><WorkExperience /></li>
-                <li><WorkExperience /></li>
-                <li><button>+</button></li>
-            </ul>
-        </div>
-    )
-}
-
-function WorkExperience() {
-    const [experience, setExperience] = useState('')
-
-    return (
-        <>
-            <input placeholder="Work Experience" value={experience} onChange={(e) => setExperience(e.target.value)}  />
-        </>
+        </form>
     )
 }
 
