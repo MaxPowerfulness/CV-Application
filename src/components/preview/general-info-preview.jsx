@@ -7,31 +7,31 @@ import pfp from '../../assets/Default_pfp.svg.png'
 
 function GerneralInfoPreview({ fullName, position, phoneNum, email, location, website }) {
     return (
-        <form id="personalInfo">
+        <section id="personalInfo">
             <div className='infoCont'>
-                <input type="text" name='name' value={fullName} placeholder="Name" />
-                <input type="text" name='position' value={position} placeholder="Position" />
+                <p>{fullName}</p>
+                <p>{position}</p>
                 <div className='personalInfoCont'>
                     <ul className='infoList'>
                         <li>
-                            <img src={phoneIcon} alt="phone" /> <input type="text" value={phoneNum} placeholder="Phone" />
+                            <img src={phoneIcon} alt="phone" /> <p>{phoneNum}</p>
                         </li>
                         <li>
-                            <img src={emailIcon} alt="email" /> <input type="text" value={email} placeholder="Email" />
+                            <img src={emailIcon} alt="email" /> <p>{email}</p>
                         </li>
                     </ul>
                     <ul className='infoList'>
                         <li>
-                            <img src={locationIcon} alt="location" /> <input type="text" value={location} placeholder="Location" />
+                            <img src={locationIcon} alt="location" /> <p>{location}</p>
                         </li>
                         <li>
-                            <img src={websiteIcon} alt="website" /> <input type="text" value={website} placeholder="Website" />
+                            <img src={websiteIcon} alt="website" /> <p>{website}</p>
                         </li>
                     </ul>
                 </div>
             </div>
             <img src={pfp} alt="profilePicture" className="profilePic" />
-         </form>
+         </section>
     )
 }
 

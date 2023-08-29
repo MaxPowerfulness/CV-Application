@@ -56,14 +56,14 @@ function App() {
 
     return (
         <main>
-            <form id='enterInfo'>
+            <section id='enterInfo'>
                 <GerneralInfo onName={onName} onPosition={onPosition} onPhoneNumber={onPhoneNumber} onEmail={onEmail} onLocation={onLocation} onWebsite={onWebsite} />
                 <Summary onSummary={onSummary} /> 
                 <Experience onSubmit={onExperience} />
-            </form>
-            <form id='preview'>
+            </section>
+            <section id='preview'>
                 <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} />
-            </form>
+            </section>
         </main>
         // nav bar to adjust settings/print
     )
