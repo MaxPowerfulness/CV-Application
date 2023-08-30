@@ -1,27 +1,29 @@
-function Experience({onSubmit}) {
+import '../../styles/experience.css'
+
+function Experience({ onSubmit }) {
     return (
-        <form action="">
+        <form action="" onSubmit={onSubmit}>
             <h1>Experience</h1>
-            <p>
-                <label htmlFor="title">Title:</label>
+            <p className="formInput">
+                <label htmlFor="title">Title: </label>
                 <input type="text" id="title" />
             </p>
-            <p>
-                <label htmlFor="company">Company:</label>
+            <p className="formInput">
+                <label htmlFor="company">Company: </label>
                 <input type="text" id="company" />
             </p>
-            <p>
-                <label htmlFor="start">Start:</label>
+            <p className="formInput">
+                <label htmlFor="start">Start: </label>
                 <input type="date" id="start" />
-                <label htmlFor="end">End:</label>
+                <label htmlFor="end">End: </label>
                 <input type="date" id="end" />
             </p>
-            <p>
-                <label htmlFor="duties">Duties</label>
-                <input type="text" id="duties" />
+            <p className="formInput">
+                <label htmlFor="duties">Description: </label>
+                <textarea type="text" id="description"></textarea>
             </p>
             <div className="btnCont">
-                <button onSubmit={onSubmit}>Add</button>
+                <button>Add</button>
                 <button type="button">Remove</button>
             </div>
         </form>

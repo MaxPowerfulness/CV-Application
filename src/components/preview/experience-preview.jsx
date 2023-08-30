@@ -1,32 +1,24 @@
-function ExperiencePreview() {
+function ExperiencePreview({ experience }) {
+    
+    const jobList = experience.map(job => <Job key={job.id} title={job.title} start={job.start} end={job.end} company={job.company} description={job.description} />)
     
     return (
         <section id="section">
             <h1>Experience</h1>
-            <Job />
+            <ul>
+                {jobList}
+            </ul>
         </section>
     )
 }
 
-function Job() {
+function Job({title, start, end, company, description}) {
     return (
-        <div className="job">
-            <p><input placeholder="Title" id="title"/> | <input type="date" id="startDate"/> to <input type="date" id="endDate"/></p>
-            <input placeholder="Company" id="company" /> 
-            <ul className="workExperienceList">
-                <li><WorkExperience /></li>
-                <li><WorkExperience /></li>
-                <li><WorkExperience /></li>
-            </ul>
-        </div>
-    )
-}
-
-function WorkExperience() {
-    return (
-        <>
-            <input placeholder="Work Experience" />
-        </>
+        <li className="job">
+            <p><span>{title}</span> | <span>{start}</span> to <span>{end}</span></p>
+            <p>{company}</p>
+            <p>{description}</p>
+        </li>
     )
 }
 
