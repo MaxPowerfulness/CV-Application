@@ -14,18 +14,18 @@ function GerneralInfoPreview({ fullName, position, phoneNum, email, location, we
                 <div className='personalInfoCont'>
                     <ul className='infoList'>
                         <li>
-                            <img src={phoneIcon} alt="phone" /> <p>{phoneNum}</p>
+                            <img src={phoneIcon} alt="phone" /> <span>{phoneNum}</span>
                         </li>
                         <li>
-                            <img src={emailIcon} alt="email" /> <p>{email}</p>
+                            <img src={emailIcon} alt="email" /> <span>{email}</span>
                         </li>
                     </ul>
                     <ul className='infoList'>
                         <li>
-                            <img src={locationIcon} alt="location" /> <p>{location}</p>
+                            <img src={locationIcon} alt="location" /> <span>{location}</span>
                         </li>
                         <li>
-                            <img src={websiteIcon} alt="website" /> <p>{website}</p>
+                            <img src={websiteIcon} alt="website" /> <span>{website}</span>
                         </li>
                     </ul>
                 </div>
