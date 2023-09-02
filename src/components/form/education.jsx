@@ -1,27 +1,62 @@
-import { useState } from "react";
-import "../styles/education.css"
+import "../../styles/education.css"
 
-function Education() {
+function Education({onEducationSubmit, updateEducation, educations}) {
+    
+    const educationForms = educations.map(education => {
+        return(
+        <EducationForm
+            key={education.id}
+            onEducationSubmit={(e) => updateEducation(e, education.id)}
+            degree={education.degree} 
+            start={education.start}
+            end={education.end}
+            school={education.school}
+           location={education.location} 
+           gpa={education.gpa}
+            />)
+    })
+
     return (
         <section id="section">
-            <div className="educationHeader">
-                <h1>Education</h1>
-                <button className="addEducation">+</button>
-            </div>
-            <Institution />
+            <h1>Education</h1>
+            <EducationForm onEducationSubmit={onEducationSubmit} />
+            {educationForms}
         </section>
     )
 }
 
-function Institution() {
-
+function EducationForm({onEducationSubmit, degree, start, end, school, location, gpa}) {
 
     return (
-        <div className="institution">
-            <p><input placeholder="Degree" /> | <input type="date" name="starDate" /> to <input type="date" name="endDate" /></p>
-            <p><input placeholder="School" /></p>
-            <input placeholder="Location" /> <input placeholder="GPA" />
-        </div>
+        <form onSubmit={onEducationSubmit}>
+            <p>
+                <label htmlFor="degree">Degree:</label>
+                <input id="degree" type="text" defaultValue={degree} />
+            </p>
+            <p>
+                <label htmlFor="start">Start:</label>
+                <input type="date" id="start" defaultValue={start} />
+                <label htmlFor="end">End:</label>
+                <input type="date" id="end" defaultValue={end} />
+                
+            </p>
+            <p>
+                <label htmlFor="school">School:</label>
+                <input id="school" defaultValue={school} />
+            </p>
+            <p>
+                <label htmlFor="location">Location:</label>
+                <input type="text" id="location" defaultValue={location} />
+            </p>
+            <p>
+                <label htmlFor="gpa">GPA:</label>
+                <input type="text" id="gpa" defaultValue={gpa} />
+            </p>
+            <div className="btnCont">
+                <button>Save</button>
+                <button type="button" className='removeEducation'>Remove</button>
+            </div>
+        </form>
     )
 }
 
