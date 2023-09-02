@@ -1,18 +1,18 @@
 import '../../styles/experience.css'
 
-
-function Experience({ onExperienceSubmit, updateForm, experiences }) {
+function Experience({ onExperienceSubmit, updateExperience, experiences }) {
     const experienceForms = experiences.map(experience => {
         return(
         <ExperienceForm
             key={experience.id}
-            onExperienceSubmit={(e) => updateForm(e, experience.id)}
-            title={experience.title} company={experience.company}
+            onExperienceSubmit={(e) => updateExperience(e, experience.id)}
+            title={experience.title} 
+            company={experience.company}
             start={experience.start}
             end={experience.end}
             description={experience.description} />)
     })
-    
+
     return (
         <section>
             <h1>Experience</h1>
@@ -44,7 +44,7 @@ function ExperienceForm({ onExperienceSubmit, title, company, start, end, descri
                 <textarea type="text" id="description" defaultValue={description}></textarea>
             </p>
             <div className="btnCont">
-                <button>Add</button>
+                <button>Save</button>
                 <button type="button" className='removeExperience'>Remove</button>
             </div>
         </form>
