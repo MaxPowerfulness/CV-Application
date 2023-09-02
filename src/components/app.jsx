@@ -3,6 +3,7 @@ import {v4} from 'uuid'
 import GerneralInfo from './form/general-info'; 
 import Summary from './form/summary'
 import Experience from './form/experience';
+import Education from './form/education';
 import Preview from './preview/preview'
 import '../styles/app.css'
 
@@ -16,7 +17,8 @@ function App() {
     const [location, setLocation] = useState('');
     const [website, setWebsite] = useState('');
     const [summary, setSummary] = useState('');
-    const [experience, setExperience] = useState([])
+    const [experience, setExperience] = useState([]);
+    const [education, setEducation] = useState([]);
     // define setState functions here
     function onName(e) {
         setFullName(e.target.value)
@@ -56,10 +58,10 @@ function App() {
         experienceData.end = e.target[3].value;
         experienceData.description = e.target[4].value;
         setExperience([...experience, experienceData]);
-        clearForm(e)
+        clearExperienceForm(e)
     }
 
-    function updateForm(e, id) {
+    function updateExperience(e, id) {
         e.preventDefault();
         setExperience(
             experience.map(job => {
@@ -75,23 +77,59 @@ function App() {
                 }
             })
         )
-        console.log('experience', experience)
     }
 
-    function clearForm(e) {
+    function clearExperienceForm(e) {
         for (let i = 0; i < 5; i++) e.target[i].value = ''
     }
 
+    function onEducationSubmit(e) {
+        e.preventDefault();
+        const educationData = {}
+        educationData.id = v4();
+        educationData.degree = e.target[0].value;
+        educationData.start = e.target[1].value;
+        educationData.end = e.target[2].value;
+        educationData.school = e.target[3].value;
+        educationData.location = e.target[4].value;
+        educationData.gpa = e.target[5].value;
+        setEducation([...education, educationData])
+        clearEducationForm(e)
+    }
+
+    function updateEducation(e, id) {
+        e.preventDefault();
+        setEducation(
+            education.map(study => {
+                if (study.id === id) {
+                    const updatedEducation = {}
+                    updatedEducation.id = id;
+                    updatedEducation.degree = e.target[0].value;
+                    updatedEducation.start = e.target[1].value;
+                    updatedEducation.end = e.target[2].value;
+                    updatedEducation.school = e.target[3].value;
+                    updatedEducation.location = e.target[4].value;
+                    updatedEducation.gpa = e.target[5].value;
+                    return updatedEducation
+                }
+            })
+        )
+    }
+
+    function clearEducationForm(e) {
+        for (let i = 0; i < 6; i++) e.target[i].value = ''
+    }
 
     return (
         <main>
             <section id='enterInfo'>    
                 <GerneralInfo onName={onName} onPosition={onPosition} onPhoneNumber={onPhoneNumber} onEmail={onEmail} onLocation={onLocation} onWebsite={onWebsite} />
                 <Summary onSummary={onSummary} /> 
-                <Experience onExperienceSubmit={onExperienceSubmit} updateForm={updateForm} experiences={experience} />
+                <Experience onExperienceSubmit={onExperienceSubmit} updateExperience={updateExperience} experiences={experience} />
+                <Education onEducationSubmit={onEducationSubmit} updateEducation={updateEducation} educations={education} />
             </section>
             <section id='preview'>
-                <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} experience={experience} />
+                <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} experience={experience} education={education} />
             </section>
         </main>
         // nav bar to adjust settings/print
