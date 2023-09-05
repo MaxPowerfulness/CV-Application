@@ -1,18 +1,19 @@
 import "../../styles/education.css"
 
-function Education({onEducationSubmit, updateEducation, educations}) {
+function Education({onEducationSubmit, removeEducation, updateEducation, educations}) {
     
     const educationForms = educations.map(education => {
         return(
         <EducationForm
             key={education.id}
             onEducationSubmit={(e) => updateEducation(e, education.id)}
+            removeEducation={(e) => removeEducation(e, education.id)}
             degree={education.degree} 
             start={education.start}
             end={education.end}
             school={education.school}
-           location={education.location} 
-           gpa={education.gpa}
+            location={education.location} 
+            gpa={education.gpa}
             />)
     })
 
@@ -25,7 +26,7 @@ function Education({onEducationSubmit, updateEducation, educations}) {
     )
 }
 
-function EducationForm({onEducationSubmit, degree, start, end, school, location, gpa}) {
+function EducationForm({onEducationSubmit, removeEducation, degree, start, end, school, location, gpa}) {
 
     return (
         <form onSubmit={onEducationSubmit}>
@@ -54,7 +55,7 @@ function EducationForm({onEducationSubmit, degree, start, end, school, location,
             </p>
             <div className="btnCont">
                 <button>Save</button>
-                <button type="button" className='removeEducation'>Remove</button>
+                <button type="button" onClick={removeEducation}>Remove</button>
             </div>
         </form>
     )

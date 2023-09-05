@@ -1,11 +1,12 @@
 import '../../styles/experience.css'
 
-function Experience({ onExperienceSubmit, updateExperience, experiences }) {
+function Experience({ onExperienceSubmit, removeExperience, updateExperience, experiences }) {
     const experienceForms = experiences.map(experience => {
         return(
         <ExperienceForm
             key={experience.id}
             onExperienceSubmit={(e) => updateExperience(e, experience.id)}
+            removeExperience={(e) => removeExperience(e, experience.id)}
             title={experience.title} 
             company={experience.company}
             start={experience.start}
@@ -22,7 +23,7 @@ function Experience({ onExperienceSubmit, updateExperience, experiences }) {
     )
 }
 
-function ExperienceForm({ onExperienceSubmit, title, company, start, end, description }) {
+function ExperienceForm({ onExperienceSubmit, removeExperience, title, company, start, end, description }) {
     return (
         <form action="" onSubmit={onExperienceSubmit}>
             <p className="formInput">
@@ -45,7 +46,7 @@ function ExperienceForm({ onExperienceSubmit, title, company, start, end, descri
             </p>
             <div className="btnCont">
                 <button>Save</button>
-                <button type="button" className='removeExperience'>Remove</button>
+                <button type="button" className='removeExperience' onClick={removeExperience}>Remove</button>
             </div>
         </form>
     )
