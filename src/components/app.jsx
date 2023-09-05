@@ -48,9 +48,10 @@ function App() {
         setSummary(e.target.value)
     }
 
+    // Experience
     function onExperienceSubmit(e) {
         e.preventDefault();
-        const experienceData = {};
+        let experienceData = {};
         experienceData.id = v4();
         experienceData.title = e.target[0].value;
         experienceData.company = e.target[1].value;
@@ -61,20 +62,25 @@ function App() {
         clearExperienceForm(e)
     }
 
-    function updateExperience(e, id) {
+    function removeExperience(e, id) {
         e.preventDefault();
         setExperience(
+            experience.filter(job => job.id !== id)
+        )
+    }
+
+    function updateExperience(e, id) {
+        e.preventDefault();
+        let updatedExperience = {}
+        updatedExperience.title = e.target[0].value;
+        updatedExperience.company = e.target[1].value;
+        updatedExperience.start = e.target[2].value;
+        updatedExperience.end = e.target[3].value;
+        updatedExperience.description = e.target[4].value;
+        setExperience(
             experience.map(job => {
-                if (job.id === id) {
-                    const updatedExperience = {}
-                    updatedExperience.id = id;
-                    updatedExperience.title = e.target[0].value;
-                    updatedExperience.company = e.target[1].value;
-                    updatedExperience.start = e.target[2].value;
-                    updatedExperience.end = e.target[3].value;
-                    updatedExperience.description = e.target[4].value;
-                    return updatedExperience
-                }
+                if (job.id === id) return {...job, ...updatedExperience}
+                else return job
             })
         )
     }
@@ -83,9 +89,10 @@ function App() {
         for (let i = 0; i < 5; i++) e.target[i].value = ''
     }
 
+    // Education
     function onEducationSubmit(e) {
         e.preventDefault();
-        const educationData = {}
+        let educationData = {}
         educationData.id = v4();
         educationData.degree = e.target[0].value;
         educationData.start = e.target[1].value;
@@ -97,21 +104,27 @@ function App() {
         clearEducationForm(e)
     }
 
-    function updateEducation(e, id) {
+    function removeEducation(e, id) {
         e.preventDefault();
         setEducation(
+            education.filter(school => school.id !== id)
+        )
+    }
+
+    function updateEducation(e, id) {
+        e.preventDefault();
+        let updatedEducation = {}
+        updatedEducation.degree = e.target[0].value;
+        updatedEducation.start = e.target[1].value;
+        updatedEducation.end = e.target[2].value;
+        updatedEducation.school = e.target[3].value;
+        updatedEducation.location = e.target[4].value;
+        updatedEducation.gpa = e.target[5].value;
+
+        setEducation(
             education.map(study => {
-                if (study.id === id) {
-                    const updatedEducation = {}
-                    updatedEducation.id = id;
-                    updatedEducation.degree = e.target[0].value;
-                    updatedEducation.start = e.target[1].value;
-                    updatedEducation.end = e.target[2].value;
-                    updatedEducation.school = e.target[3].value;
-                    updatedEducation.location = e.target[4].value;
-                    updatedEducation.gpa = e.target[5].value;
-                    return updatedEducation
-                }
+                if (study.id === id) return { ...study, ...updatedEducation }
+                else return study
             })
         )
     }
@@ -125,8 +138,8 @@ function App() {
             <section id='enterInfo'>    
                 <GerneralInfo onName={onName} onPosition={onPosition} onPhoneNumber={onPhoneNumber} onEmail={onEmail} onLocation={onLocation} onWebsite={onWebsite} />
                 <Summary onSummary={onSummary} /> 
-                <Experience onExperienceSubmit={onExperienceSubmit} updateExperience={updateExperience} experiences={experience} />
-                <Education onEducationSubmit={onEducationSubmit} updateEducation={updateEducation} educations={education} />
+                <Experience onExperienceSubmit={onExperienceSubmit} removeExperience={removeExperience} updateExperience={updateExperience} experiences={experience} />
+                <Education onEducationSubmit={onEducationSubmit} removeEducation={removeEducation} updateEducation={updateEducation} educations={education} />
             </section>
             <section id='preview'>
                 <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} experience={experience} education={education} />
