@@ -4,6 +4,7 @@ import GerneralInfo from './form/general-info';
 import Summary from './form/summary'
 import Experience from './form/experience';
 import Education from './form/education';
+import Skill from './form/skills';
 import Preview from './preview/preview'
 import '../styles/app.css'
 
@@ -19,6 +20,7 @@ function App() {
     const [summary, setSummary] = useState('');
     const [experience, setExperience] = useState([]);
     const [education, setEducation] = useState([]);
+    const [skills, setSkills] = useState([]);
     // define setState functions here
     function onName(e) {
         setFullName(e.target.value)
@@ -133,6 +135,33 @@ function App() {
         for (let i = 0; i < 6; i++) e.target[i].value = ''
     }
 
+    function onSkill(e) {
+        e.preventDefault();
+        let skill = {};
+        skill.id = v4();
+        skill.skill = e.target[0].value;
+        setSkills([...skills, skill]);
+        e.target[0].value = '';
+    }
+
+    function updateSkill(e, id) {
+        e.preventDefault();
+        let updatedSkill = {}
+        updatedSkill.skill = e.target[0].value;
+
+        setSkills(skills.map(skill => {
+            if (skill.id === id) return { ...skill, ...updatedSkill }
+            else return skill
+        }))
+    }
+
+    function removeSkill(e, id) {
+        e.preventDefault();
+        setSkills(
+            skills.filter(skill => skill.id !== id)
+        )
+    }
+
     return (
         <main>
             <section id='enterInfo'>    
@@ -140,9 +169,10 @@ function App() {
                 <Summary onSummary={onSummary} /> 
                 <Experience onExperienceSubmit={onExperienceSubmit} removeExperience={removeExperience} updateExperience={updateExperience} experiences={experience} />
                 <Education onEducationSubmit={onEducationSubmit} removeEducation={removeEducation} updateEducation={updateEducation} educations={education} />
+                <Skill onSkill={onSkill} updateSkill={updateSkill} removeSkill={removeSkill} skills={skills} />
             </section>
             <section id='preview'>
-                <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} experience={experience} education={education} />
+                <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} experience={experience} education={education} skills={skills} />
             </section>
         </main>
         // nav bar to adjust settings/print
