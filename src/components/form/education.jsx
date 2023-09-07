@@ -1,27 +1,39 @@
 import "../../styles/education.css"
 
-function Education({onEducationSubmit, removeEducation, updateEducation, educations}) {
+function Education({onEducationSubmit, removeEducation, updateEducation, educations, toggleCollapsibility}) {
     
     const educationForms = educations.map(education => {
         return(
-        <EducationForm
-            key={education.id}
-            onEducationSubmit={(e) => updateEducation(e, education.id)}
-            removeEducation={(e) => removeEducation(e, education.id)}
-            degree={education.degree} 
-            start={education.start}
-            end={education.end}
-            school={education.school}
-            location={education.location} 
-            gpa={education.gpa}
-            />)
+        <div key={education.id}>
+            <div className="titleCont">
+                <p>{education.degree}</p>
+                <p onClick={toggleCollapsibility} className="downArrow">v</p>
+            </div>
+            <div style={{ display: 'none' }}>
+                <EducationForm
+                    onEducationSubmit={(e) => updateEducation(e, education.id)}
+                    removeEducation={(e) => removeEducation(e, education.id)}
+                    degree={education.degree}
+                    start={education.start}
+                    end={education.end}
+                    school={education.school}
+                    location={education.location}
+                    gpa={education.gpa}
+                />
+            </div>
+        </div>)
     })
 
     return (
         <section id="section">
-            <h1>Education</h1>
-            <EducationForm onEducationSubmit={onEducationSubmit} />
-            {educationForms}
+            <div className="headerCont">
+                <h1>Education</h1>
+                <span onClick={toggleCollapsibility} className="downArrow">v</span>
+            </div>
+            <div className="content">
+                <EducationForm onEducationSubmit={onEducationSubmit} />
+                {educationForms}
+            </div>
         </section>
     )
 }

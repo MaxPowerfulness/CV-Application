@@ -23,7 +23,8 @@ function App() {
     const [education, setEducation] = useState([]);
     const [skills, setSkills] = useState([]);
     const [certificates, setCertificates] = useState([])
-    // define setState functions here
+    
+    // Personal info and Summary
     function onName(e) {
         setFullName(e.target.value)
     }
@@ -193,15 +194,25 @@ function App() {
         )
     }
 
+    // Functional functions
+    function toggleCollapsibility(e) {
+        const content = e.target.parentNode.nextElementSibling
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+        }
+    }
+
     return (
         <main>
             <section id='enterInfo'>    
-                <GerneralInfo onName={onName} onPosition={onPosition} onPhoneNumber={onPhoneNumber} onEmail={onEmail} onLocation={onLocation} onWebsite={onWebsite} />
-                <Summary onSummary={onSummary} /> 
-                <Experience onExperienceSubmit={onExperienceSubmit} removeExperience={removeExperience} updateExperience={updateExperience} experiences={experience} />
-                <Education onEducationSubmit={onEducationSubmit} removeEducation={removeEducation} updateEducation={updateEducation} educations={education} />
-                <Skill onSkill={onSkill} updateSkill={updateSkill} removeSkill={removeSkill} skills={skills} />
-                <Certificate onCertificate={onCertificate} updateCertificate={updateCertificate} removeCertificate={removeCertificate} certificates={certificates} />
+                <GerneralInfo onName={onName} onPosition={onPosition} onPhoneNumber={onPhoneNumber} onEmail={onEmail} onLocation={onLocation} onWebsite={onWebsite} toggleCollapsibility={toggleCollapsibility} />
+                <Summary onSummary={onSummary} toggleCollapsibility={toggleCollapsibility} /> 
+                <Experience onExperienceSubmit={onExperienceSubmit} removeExperience={removeExperience} updateExperience={updateExperience} experiences={experience} toggleCollapsibility={toggleCollapsibility} />
+                <Education onEducationSubmit={onEducationSubmit} removeEducation={removeEducation} updateEducation={updateEducation} educations={education} toggleCollapsibility={toggleCollapsibility} />
+                <Skill onSkill={onSkill} updateSkill={updateSkill} removeSkill={removeSkill} skills={skills} toggleCollapsibility={toggleCollapsibility} />
+                <Certificate onCertificate={onCertificate} updateCertificate={updateCertificate} removeCertificate={removeCertificate} certificates={certificates} toggleCollapsibility={toggleCollapsibility} />
             </section>
             <section id='preview'>
                 <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} experience={experience} education={education} skills={skills} certificates={certificates} />

@@ -1,24 +1,38 @@
 import '../../styles/experience.css'
 
-function Experience({ onExperienceSubmit, removeExperience, updateExperience, experiences }) {
+function Experience({ onExperienceSubmit, removeExperience, updateExperience, experiences, toggleCollapsibility }) {
+    
     const experienceForms = experiences.map(experience => {
         return(
-        <ExperienceForm
-            key={experience.id}
-            onExperienceSubmit={(e) => updateExperience(e, experience.id)}
-            removeExperience={(e) => removeExperience(e, experience.id)}
-            title={experience.title} 
-            company={experience.company}
-            start={experience.start}
-            end={experience.end}
-            description={experience.description} />)
+        <div key={experience.id}>
+            <div className="titleCont">
+                <p>{experience.title}</p>
+                <p onClick={toggleCollapsibility} className="downArrow">v</p>
+            </div>
+            <div style={{ display: 'none' }}>
+                <ExperienceForm
+                    onExperienceSubmit={(e) => updateExperience(e, experience.id)}
+                    removeExperience={(e) => removeExperience(e, experience.id)}
+                    title={experience.title}
+                    company={experience.company}
+                    start={experience.start}
+                    end={experience.end}
+                    description={experience.description} 
+                />
+            </div>
+        </div>)
     })
 
     return (
         <section>
-            <h1>Experience</h1>
-            <ExperienceForm onExperienceSubmit={onExperienceSubmit} />
-            {experienceForms}
+            <div className="headerCont">
+                <h1>Experience</h1>
+                <span onClick={toggleCollapsibility} className="downArrow">v</span>
+            </div>
+            <div className="content">
+                <ExperienceForm onExperienceSubmit={onExperienceSubmit} />
+                {experienceForms}
+            </div>
         </section>
     )
 }
