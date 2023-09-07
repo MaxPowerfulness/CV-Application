@@ -1,26 +1,24 @@
-import { useState } from "react";
-import '../styles/certificates.css'
+import '../../styles/certificates.css'
 
-function Certificates() {
+function Certificate({ onCertificate, updateCertificate, removeCertificate, certificates }) {
+    const certList = certificates.map(cert => <CertificateForm key={cert.id} onSubmit={(e) => {updateCertificate(e, cert.id)}} removeCertificate={(e) => {removeCertificate(e, cert.id)}} certificates={cert.cert} />)
+
     return (
-        <section id="certificates">
-            <div className="certificatesHeader">
-                <h1>Certificates</h1>
-                <button className="addCertificates">+</button>
-            </div>
-            <ul className="certificateList">
-                <Certificate />
-            </ul>
+        <section>
+            <h1>Certificates</h1>
+            <CertificateForm onSubmit={onCertificate} />
+            {certList}
         </section>
     )
 }
 
-function Certificate() {
-    const [certificate, setCertificate] = useState('')
-
+function CertificateForm( {onSubmit, removeCertificate, certificates} ) {
     return (
-        <li><input placeholder="Certificate" value={certificate} onChange={(e) => setCertificate(e.target.value)} /></li>
+        <form onSubmit={onSubmit}>
+            <input type="text" placeholder="Certificate" defaultValue={certificates} />
+            <span><button>Save</button> <button type="button" onClick={removeCertificate}>Remove</button></span>
+        </form>
     )
 }
 
-export default Certificates
+export default Certificate

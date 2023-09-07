@@ -5,6 +5,7 @@ import Summary from './form/summary'
 import Experience from './form/experience';
 import Education from './form/education';
 import Skill from './form/skills';
+import Certificate from './form/certificates';
 import Preview from './preview/preview'
 import '../styles/app.css'
 
@@ -21,6 +22,7 @@ function App() {
     const [experience, setExperience] = useState([]);
     const [education, setEducation] = useState([]);
     const [skills, setSkills] = useState([]);
+    const [certificates, setCertificates] = useState([])
     // define setState functions here
     function onName(e) {
         setFullName(e.target.value)
@@ -135,6 +137,7 @@ function App() {
         for (let i = 0; i < 6; i++) e.target[i].value = ''
     }
 
+    // Skills
     function onSkill(e) {
         e.preventDefault();
         let skill = {};
@@ -162,6 +165,34 @@ function App() {
         )
     }
 
+    // Certificates
+    function onCertificate(e) {
+        e.preventDefault();
+        let cert = {}
+        cert.id = v4();
+        cert.cert = e.target[0].value;
+        setCertificates([...certificates, cert])
+        e.target[0].value = ''
+    }
+
+    function updateCertificate(e, id) {
+        e.preventDefault();
+        let updatedCert = {}
+        updatedCert.cert = e.target[0].value;
+
+        setCertificates(certificates.map(cert => {
+            if (cert.id === id) return { ...cert, ...updatedCert }
+            else return cert
+        }))
+    }
+
+    function removeCertificate(e, id) {
+        e.preventDefault();
+        setCertificates(
+            certificates.filter(cert => cert.id !== id)
+        )
+    }
+
     return (
         <main>
             <section id='enterInfo'>    
@@ -170,9 +201,10 @@ function App() {
                 <Experience onExperienceSubmit={onExperienceSubmit} removeExperience={removeExperience} updateExperience={updateExperience} experiences={experience} />
                 <Education onEducationSubmit={onEducationSubmit} removeEducation={removeEducation} updateEducation={updateEducation} educations={education} />
                 <Skill onSkill={onSkill} updateSkill={updateSkill} removeSkill={removeSkill} skills={skills} />
+                <Certificate onCertificate={onCertificate} updateCertificate={updateCertificate} removeCertificate={removeCertificate} certificates={certificates} />
             </section>
             <section id='preview'>
-                <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} experience={experience} education={education} skills={skills} />
+                <Preview fullName={fullName} position={position} phoneNum={phoneNum} email={email} location={location} website={website} summary={summary} experience={experience} education={education} skills={skills} certificates={certificates} />
             </section>
         </main>
         // nav bar to adjust settings/print
