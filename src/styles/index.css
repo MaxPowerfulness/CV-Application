@@ -40,6 +40,31 @@ button:hover {
   height: 100%;
 }
 
+.formInput {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Colloapsability */
+.headerCont {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.downArrow:hover {
+  cursor: grab;
+}
+
+.content {
+  transition: 2s ease-out;
+  -webkit-transition: 2s ease-out;
+  background: cyan;
+  display: none;
+  overflow: hidden;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

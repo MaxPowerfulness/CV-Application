@@ -1,10 +1,5 @@
-.educationHeader {
+.titleCont {
     display: flex;
-    align-items: center;
-    border-bottom: 3px solid black;
     justify-content: space-between;
-}
-
-.institution {
-    margin-top: 10px;
+    overflow: hidden;
 }
