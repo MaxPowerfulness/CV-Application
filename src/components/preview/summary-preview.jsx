@@ -1,10 +1,10 @@
 function SummaryPreview({summary}) {
 
     return (
-        <form id="section">
-            <h1 className="summary">Summary</h1>
-            <p>{summary}</p>
-        </form>
+        <section>
+            <h1>Summary</h1>
+            <p className="previewContent">{summary}</p>
+        </section>
     )
 }
 

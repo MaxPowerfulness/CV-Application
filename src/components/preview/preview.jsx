@@ -13,8 +13,10 @@ function Preview({fullName, position, phoneNum, email, location, website, summar
             <SummaryPreview summary={summary} />
             <ExperiencePreview experience={experience} />
             <EducationPreview education={education} />
-            <SkillsPreview skills={skills} />
-            <CertificatePreview certificates={certificates} />
+            <section id='skillsCert'>
+                <SkillsPreview skills={skills} />
+                <CertificatePreview certificates={certificates} />
+            </section>
         </div>
 
     )

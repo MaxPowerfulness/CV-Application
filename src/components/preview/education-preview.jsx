@@ -14,9 +14,9 @@ function EducationPreview({ education }) {
     })
 
     return (
-        <section id="section">
+        <section>
             <h1>Education</h1>
-            <ul>
+            <ul className="previewContent">
                 {educationList}
             </ul>
         </section>
