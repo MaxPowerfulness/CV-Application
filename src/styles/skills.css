@@ -1,15 +1,3 @@
-#skills {
-    width: 40%;
-}
-
-
-.skillsHeader {
-    display: flex;
-    align-items: center;
-    border-bottom: 3px solid black;
-    justify-content: space-between;
-}
-
 .skillList li {
     margin-left: 2rem;
 }

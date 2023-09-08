@@ -1,16 +1,6 @@
-.jobHeader {
-    display: flex;
-    align-items: center;
-    border-bottom: 3px solid black;
-    justify-content: space-between;
-}
-
 .job {
-    margin-top: 10px;
-}
-
-.workExperienceList  li {
     margin-left: 2rem;
+    margin-top: 3px;
 }
 
 .btnCont {
