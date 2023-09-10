@@ -4,12 +4,12 @@ function Education({onEducationSubmit, removeEducation, updateEducation, educati
     
     const educationForms = educations.map(education => {
         return(
-        <div key={education.id}>
+        <div key={education.id} className="collapsedItem">
             <div className="titleCont">
                 <p>{education.degree}</p>
                 <p onClick={toggleCollapsibility} className="downArrow">v</p>
             </div>
-            <div style={{ display: 'none' }}>
+            <div className="content">
                 <EducationForm
                     onEducationSubmit={(e) => updateEducation(e, education.id)}
                     removeEducation={(e) => removeEducation(e, education.id)}
@@ -25,7 +25,7 @@ function Education({onEducationSubmit, removeEducation, updateEducation, educati
     })
 
     return (
-        <section id="section">
+        <section>
             <div className="headerCont">
                 <h1>Education</h1>
                 <span onClick={toggleCollapsibility} className="downArrow">v</span>
@@ -50,7 +50,7 @@ function EducationForm({onEducationSubmit, removeEducation, degree, start, end, 
                 <label htmlFor="start">Start:</label>
                 <input type="date" id="start" defaultValue={start} />
                 <label htmlFor="end">End:</label>
-                <input type="date" id="end" defaultValue={end} />
+                <input type="text" id="end" defaultValue={end} />
                 
             </p>
             <p>

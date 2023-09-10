@@ -4,12 +4,12 @@ function Experience({ onExperienceSubmit, removeExperience, updateExperience, ex
     
     const experienceForms = experiences.map(experience => {
         return(
-        <div key={experience.id}>
+        <div key={experience.id} className="collapsedItem">
             <div className="titleCont">
                 <p>{experience.title}</p>
                 <p onClick={toggleCollapsibility} className="downArrow">v</p>
             </div>
-            <div style={{ display: 'none' }}>
+            <div className='content'>
                 <ExperienceForm
                     onExperienceSubmit={(e) => updateExperience(e, experience.id)}
                     removeExperience={(e) => removeExperience(e, experience.id)}
@@ -52,7 +52,7 @@ function ExperienceForm({ onExperienceSubmit, removeExperience, title, company, 
                 <label htmlFor="start">Start: </label>
                 <input type="date" id="start" defaultValue={start} />
                 <label htmlFor="end">End: </label>
-                <input type="date" id="end" defaultValue={end} />
+                <input type="text" id="end" defaultValue={end} />
             </p>
             <p className="formInput">
                 <label htmlFor="duties">Description: </label>

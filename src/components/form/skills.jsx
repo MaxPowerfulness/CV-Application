@@ -19,7 +19,7 @@ function Skill({ onSkill, updateSkill, removeSkill, skills, toggleCollapsibility
 
 function SkillsForm( {onSubmit, removeSkill, skill}) {
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className='skillEntry'>
             <input type="text" placeholder="Skill" defaultValue={skill} />
             <span><button>Save</button> <button type="button" onClick={removeSkill}>Remove</button></span>
         </form>

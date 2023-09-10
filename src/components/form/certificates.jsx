@@ -19,7 +19,7 @@ function Certificate({ onCertificate, updateCertificate, removeCertificate, cert
 
 function CertificateForm( {onSubmit, removeCertificate, certificates} ) {
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className='certEntry'>
             <input type="text" placeholder="Certificate" defaultValue={certificates} />
             <span><button>Save</button> <button type="button" onClick={removeCertificate}>Remove</button></span>
         </form>

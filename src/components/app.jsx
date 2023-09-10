@@ -11,7 +11,7 @@ import '../styles/app.css'
 
 
 function App() {
-    // initialize all state variables here
+    // State variables
     const [fullName, setFullName] = useState('');
     const [position, setPosition] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
@@ -197,11 +197,7 @@ function App() {
     // Functional functions
     function toggleCollapsibility(e) {
         const content = e.target.parentNode.nextElementSibling
-        if (content.style.display === 'block') {
-            content.style.display = 'none';
-        } else {
-            content.style.display = 'block';
-        }
+        content.classList.toggle('show');
     }
 
     return (

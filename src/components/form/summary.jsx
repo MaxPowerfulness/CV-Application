@@ -10,7 +10,7 @@ function Summary({onSummary, toggleCollapsibility}) {
             </div>
             <div className="content">
                 <form>
-                    <textarea name="summary" id="summaryText" cols="55" rows="4" maxLength="280" placeholder="Tell me about yourself" onChange={onSummary}></textarea>
+                    <textarea name="summary" id="summaryText" rows="4" placeholder="Tell me about yourself" onChange={onSummary}></textarea>
                 </form>
             </div>
         </section>
