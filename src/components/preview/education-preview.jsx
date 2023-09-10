@@ -14,7 +14,7 @@ function EducationPreview({ education }) {
     })
 
     return (
-        <section>
+        <section id="nonHeader">
             <h1>Education</h1>
             <ul className="previewContent">
                 {educationList}
@@ -25,11 +25,11 @@ function EducationPreview({ education }) {
 
 function Institution({degree, start, end, school, location, GPA}) {
     return (
-        <div>
+        <li className="school">
             <p>{degree} | {start} to {end}</p>
             <p>{school}</p>
             <span>{location}</span> <span>{GPA}</span>
-        </div>
+        </li>
     )
 }
 

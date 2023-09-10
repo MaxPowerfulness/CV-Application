@@ -1,7 +1,7 @@
 function SummaryPreview({summary}) {
 
     return (
-        <section>
+        <section id="nonHeader">
             <h1>Summary</h1>
             <p className="previewContent">{summary}</p>
         </section>

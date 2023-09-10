@@ -22,12 +22,12 @@ function CertificatePreview({ certificates }) {
     })
    
     return (
-        <section>
+        <p>
             <h1>Certificates</h1>
-            <div className="previewContent">
+            <div className="previewContent skillCert">
                 {certList}
             </div>
-        </section>
+        </p>
     )
 }
 
