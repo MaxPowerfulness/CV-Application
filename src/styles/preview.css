@@ -1,24 +1,32 @@
 #preview {
-    width: 70%;
+    width: 35%;
     border: 2px solid black;
-    margin-left: auto;
     margin-right: auto;
 }
 
 #preview section {
     border-bottom: 3px solid black;
-    padding: 15px 10px 15px 10px;
+    padding: 20px 15px 20px 15px;
+}
+
+#nonHeader {
+    background-color: #F5F3F5;
 }
 
 .previewContent {
     padding: 10px;
-    background-color: 	#F5F5F5;
+    background-color:rgb(234, 234, 234);
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    font-size: 0.8rem;
 }
+
+/* Skills and Certificates */
 
 #skillsCert {
     display: flex;
+    background-color: #F5F3F5;
+    gap: 5px;
 }
 
 #skillsCert > * {
@@ -27,4 +35,15 @@
 #skillsCert div { 
     display: flex;
     justify-content: space-evenly
+}
+
+.skillCert {
+    height: 97px;
+}
+
+.skillEntry,
+.certEntry {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
 }

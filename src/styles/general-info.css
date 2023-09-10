@@ -1,7 +1,8 @@
 #personalInfo {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(162, 186, 236);
+    background-color: #576CA8;
+    color: #F5F3F5;
  }
  
 /* Personal info */
@@ -12,10 +13,6 @@
 
 .name {
     font-size: 2rem;
-}
-
-.position {
-
 }
 
 
